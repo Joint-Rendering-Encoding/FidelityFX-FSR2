@@ -576,6 +576,18 @@ void FSR2Sample::BuildUI()
 
             m_UIState.accumulatingFrameCount++;
         }
+        
+        if (ImGui::CollapsingHeader("Camera", ImGuiTreeNodeFlags_DefaultOpen))
+        {
+            // Get camera from and to
+            Vectormath::SSE::Vector4 cameraFrom, cameraTo;
+            cameraFrom = m_UIState.camera.GetPosition();
+            cameraTo = m_UIState.camera.GetPosition() - m_UIState.camera.GetDirection();
+
+            ImGui::Text("Camera from: %.2f, %.2f, %.2f", (float)cameraFrom.getX(), (float)cameraFrom.getY(), (float)cameraFrom.getZ());
+            ImGui::Text("Camera to  : %.2f, %.2f, %.2f", (float)cameraTo.getX(), (float)cameraTo.getY(), (float)cameraTo.getZ());
+        }
+
         ImGui::End(); // PROFILER
     }
 }
@@ -600,8 +612,8 @@ void UIState::Initialize()
     this->WireframeColor[2] = 0.0f;
     this->bShowControlsWindow = true;
     this->bShowProfilerWindow = true;
-    this->bShowMilliseconds = false;
-    this->bShowAverage = true;
+    this->bShowMilliseconds = true;
+    this->bShowAverage = false;
     this->lastTimeStampsResetTime = 0;
     this->accumulatingFrameCount = 0;
 }

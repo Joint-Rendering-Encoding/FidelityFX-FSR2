@@ -36,7 +36,7 @@ static constexpr float MagnifierBorderColor_Free[3]   = { 0.72f, 0.002f, 0.0f };
 FSR2Sample::FSR2Sample(LPCSTR name) : FrameworkWindows(name)
 {
     m_time = 0;
-    m_bPlay = true;
+    m_bPlay = false;
 
     m_pGltfLoader = NULL;
 }
@@ -60,7 +60,10 @@ void FSR2Sample::OnParseCommandLine(LPSTR lpCmdLine, uint32_t* pWidth, uint32_t*
     m_activeCamera = 1;
     m_stablePowerState = false;
 
-    //read globals
+    // Change default upscale mode to custom
+    m_nUpscaleMode = UPSCALE_QUALITY_MODE_CUSTOM;
+
+    // read globals
     auto process = [&](json jData)
     {
         *pWidth = jData.value("width", *pWidth);
@@ -75,6 +78,10 @@ void FSR2Sample::OnParseCommandLine(LPSTR lpCmdLine, uint32_t* pWidth, uint32_t*
         m_bIsBenchmarking = jData.value("benchmark", m_bIsBenchmarking);
         m_stablePowerState = jData.value("stablePowerState", m_stablePowerState);
         m_fontSize = jData.value("fontsize", m_fontSize);
+
+        // FSR
+        m_UIState.m_nUpscaleType = jData.value("upscaleType", m_UIState.m_nUpscaleType); // FSR 1.0 = 3, FSR 2.0 = 4, Native = 5
+        m_fUpscaleRatio = jData.value("upscaleRatio", m_fUpscaleRatio);                  // Between 1.0 and 3.0
     };
 
     // read config file
@@ -748,13 +755,13 @@ void FSR2Sample::OnRender()
     {
         // Benchmarking takes control of the time, and exits the app when the animation is done
         std::vector<TimeStamp> timeStamps = m_pRenderer->GetTimingValues();
-        m_time = BenchmarkLoop(timeStamps, &m_UIState.camera, m_pRenderer->GetScreenshotFileName());
+        m_time = BenchmarkLoop(timeStamps, &m_UIState.camera, &m_UIState.bReset, m_pRenderer->GetScreenshotFileName());
     }
     else
     {
         BuildUI();  // UI logic. Note that the rendering of the UI happens later.
-        OnUpdate(); // Update camera, handle keyboard/mouse input
     }
+    OnUpdate(); // Update camera, handle keyboard/mouse input
 
     // Do Render frame using AFR
     m_pRenderer->OnRender(&m_UIState, m_UIState.camera, &m_swapChain);

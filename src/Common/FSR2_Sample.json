@@ -3,14 +3,16 @@
     "CpuValidationLayerEnabled": false,
     "GpuValidationLayerEnabled": false,
     "presentationMode": 0,
-    "width": 1920,
-    "height": 1080,
+    "width": 3840,
+    "height": 2160,
     "activeScene": 1,
-    "benchmark": false,
+    "benchmark": true,
     "vsync": false,
     "stablePowerState": false,
     "fontsize": 13,
-    "FreesyncHDROptionEnabled":  true
+    "FreesyncHDROptionEnabled": true,
+    "upscaleType": 4,
+    "upscaleRatio": 3.0
   },
   "scenes": [
     {
@@ -24,8 +26,8 @@
       "intensity": 10,
       "exposure": 1.4,
       "camera": {
-        "defaultFrom": [ 0.45, -1.4, -6.0 ],
-        "defaultTo": [ -6.5, -1.4, -7 ]
+        "defaultFrom": [0.0, 0.0, 0.0],
+        "defaultTo": [1.0, 1.0, 1.0]
       }
     },
     {
@@ -38,36 +40,78 @@
       "emmisiveFactor": 1,
       "intensity": 7.5,
       "exposure": 1.5,
-      "activeCamera": 1,
+      "activeCamera": -1,
       "camera": {
-        "defaultFrom": [ 3.0, 1.5, -0.2 ],
-        "defaultTo": [ 0.0, 1.5, -0.2 ]
+        "defaultFrom": [3.0, 1.5, -0.2],
+        "defaultTo": [0.0, 1.5, -0.2]
       },
       "BenchmarkSettings": {
         "timeStep": 1,
         "timeStart": 0,
-        "timeEnd": 10000,
+        "timeEnd": 240,
         "exitWhenTimeEnds": true,
         "resultsFilename": "Sponza.csv",
-        "warmUpFrames": 200,
+        "warmUpFrames": 50,
         "sequence": {
           "timeStart": 0,
-          "timeEnd": 2000,
+          "timeEnd": 240,
           "keyFrames": [
             {
               "time": 0,
-              "from": [ 5.13694048, 1.89175785, -1.40289795 ],
-              "to": [ 0.703276634, 1.02280307, 0.218072295 ],
+              "from": [5.13694048, 1.89175785, -1.40289795],
+              "to": [0.703276634, 1.02280307, 0.218072295],
               "screenShotName": "camera1.jpg"
             },
             {
-              "time": 1000,
-              "from": [ -5.13694048, 1.89175785, -1.40289795 ],
-              "to": [ 0.703276634, 1.02280307, 0.218072295 ],
+              "time": 60,
+              "from": [-5.13694048, 1.89175785, -1.40289795],
+              "to": [0.703276634, 1.02280307, 0.218072295],
               "screenShotName": "camera2.jpg"
+            },
+            {
+              "time": 120,
+              "from": [5.13694048, 2.89175785, -1.40289795],
+              "to": [0.703276634, 1.02280307, 0.218072295],
+              "screenShotName": "camera3.jpg"
+            },
+            {
+              "time": 180,
+              "from": [-5.13694048, 2.89175785, 1.40289795],
+              "to": [0.703276634, 1.02280307, 0.218072295],
+              "screenShotName": "camera4.jpg"
             }
           ]
         }
+      }
+    },
+    {
+      "name": "BistroInterior",
+      "directory": "..\\media\\cauldron-media\\BistroInterior\\",
+      "filename": "scene.gltf",
+      "TAA": true,
+      "toneMapper": 0,
+      "iblFactor": 0.6,
+      "emmisiveFactor": 1,
+      "intensity": 10,
+      "exposure": 1.4,
+      "camera": {
+        "defaultFrom": [0.0, 0.0, 0.0],
+        "defaultTo": [1.0, 1.0, 1.0]
+      }
+    },
+    {
+      "name": "Brutalism",
+      "directory": "..\\media\\cauldron-media\\Brutalism\\",
+      "filename": "BrutalistHall.gltf",
+      "TAA": true,
+      "toneMapper": 0,
+      "iblFactor": 0.6,
+      "emmisiveFactor": 1,
+      "intensity": 10,
+      "exposure": 1.4,
+      "camera": {
+        "defaultFrom": [0.45, -1.4, -6.0],
+        "defaultTo": [-6.5, -1.4, -7]
       }
     }
   ]

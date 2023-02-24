@@ -239,7 +239,7 @@ void UpscaleContext_FSR2_API::Draw(ID3D12GraphicsCommandList* pCommandList, cons
     dispatchParameters.jitterOffset.y = m_JitterY;
     dispatchParameters.motionVectorScale.x = (float)pState->renderWidth;
     dispatchParameters.motionVectorScale.y = (float)pState->renderHeight;
-    dispatchParameters.reset = false;
+    dispatchParameters.reset = pState->bReset;
     dispatchParameters.enableSharpening = pState->bUseRcas;
     dispatchParameters.sharpness = pState->sharpening;
     dispatchParameters.frameTimeDelta = (float)pState->deltaTime;
