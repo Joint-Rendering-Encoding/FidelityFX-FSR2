@@ -6,13 +6,14 @@
     "width": 3840,
     "height": 2160,
     "activeScene": 1,
-    "benchmark": true,
+    "benchmark": false,
     "vsync": false,
     "stablePowerState": false,
     "fontsize": 13,
     "FreesyncHDROptionEnabled": true,
     "upscaleType": 4,
-    "upscaleRatio": 3.0
+    "upscaleRatio": 2.0,
+    "mipBias": -2.0
   },
   "scenes": [
     {

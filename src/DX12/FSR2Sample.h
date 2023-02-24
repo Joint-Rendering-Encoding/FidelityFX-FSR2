@@ -151,6 +151,7 @@ private:
 	
     UpscaleQualityMode m_nUpscaleMode = UPSCALE_QUALITY_MODE_PERFORMANCE;
 	float m_fUpscaleRatio = 2.0f;
+    float m_fMipBias = mipBias[UPSCALE_QUALITY_MODE_PERFORMANCE];
     bool m_bDynamicRes = false;
     float m_fDynamicResMinPercentage = 1.0f;
     struct

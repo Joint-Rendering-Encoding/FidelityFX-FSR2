@@ -82,6 +82,7 @@ void FSR2Sample::OnParseCommandLine(LPSTR lpCmdLine, uint32_t* pWidth, uint32_t*
         // FSR
         m_UIState.m_nUpscaleType = jData.value("upscaleType", m_UIState.m_nUpscaleType); // FSR 1.0 = 3, FSR 2.0 = 4, Native = 5
         m_fUpscaleRatio = jData.value("upscaleRatio", m_fUpscaleRatio);                  // Between 1.0 and 3.0
+        m_fMipBias = jData.value("mipBias", m_fMipBias);                                // Between -5.0 and 0.0
     };
 
     // read config file
@@ -719,10 +720,14 @@ void FSR2Sample::OnRender()
     }
     else
     {
-        float thisFrameUpscaleRatio = 1.f/m_SavedUiValues[m_UIState.m_nUpscaleType].upscaleRatio;
+        if (m_nUpscaleMode == UPSCALE_QUALITY_MODE_CUSTOM)
+            m_UIState.mipBias = m_fMipBias;
+        else
+            m_UIState.mipBias = log2f(float(m_UIState.renderWidth) / m_UIState.displayWidth) - 1.0f;
+
+        float thisFrameUpscaleRatio = 1.f / m_SavedUiValues[m_UIState.m_nUpscaleType].upscaleRatio;
         m_UIState.renderWidth = (uint32_t)((float)m_Width * thisFrameUpscaleRatio);
         m_UIState.renderHeight = (uint32_t)((float)m_Height * thisFrameUpscaleRatio);
-        m_UIState.mipBias = log2f(float(m_UIState.renderWidth) / m_UIState.displayWidth) - 1.0f;
     }
 
     ImGui::NewFrame();
