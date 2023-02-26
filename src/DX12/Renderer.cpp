@@ -1054,6 +1054,10 @@ void Renderer::ResetScene()
 
 void Renderer::PopulateEmitters(bool playAnimations, int activeScene, float frameTime)
 {
+    // Pass if there is no animation to play
+    if (!playAnimations)
+        return;
+
     IParticleSystem::EmitterParams sparksEmitter = {};
     IParticleSystem::EmitterParams smokeEmitter = {};
 

@@ -69,7 +69,7 @@ struct UIState
     Camera  camera;
     bool    m_bHeadBobbing = false;
 
-    bool    m_bPlayAnimations = true;
+    bool    m_bPlayAnimations = false;
     float   m_fTextureAnimationSpeed = 1.0f;
     int     m_activeScene = 0;
     bool    m_bAnimateSpotlight = false;

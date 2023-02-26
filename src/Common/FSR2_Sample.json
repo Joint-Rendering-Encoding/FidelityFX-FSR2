@@ -13,7 +13,10 @@
     "FreesyncHDROptionEnabled": true,
     "upscaleType": 4,
     "upscaleRatio": 2.0,
-    "mipBias": -2.0
+    "mipBias": -2.0,
+    "enableFrameRateLimiter": true,
+    "useGPUFrameRateLimiter": true,
+    "targetFrameTime": 8.333333
   },
   "scenes": [
     {
@@ -111,8 +114,8 @@
       "intensity": 10,
       "exposure": 1.4,
       "camera": {
-        "defaultFrom": [0.45, -1.4, -6.0],
-        "defaultTo": [-6.5, -1.4, -7]
+        "defaultFrom": [12.0, 8.2, -10.7],
+        "defaultTo": [14.0, 8.2, -10.7]
       }
     }
   ]

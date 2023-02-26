@@ -380,7 +380,7 @@ void FSR2Sample::BuildUI()
                 DEVMODE lpDevMode = {};
                 lpDevMode.dmSize = sizeof(DEVMODE);
 
-                static int sTargetFPS = -1;
+                static int sTargetFPS = m_UIState.targetFrameTime > 0 ? 1000.f / m_UIState.targetFrameTime : -1;
 
                 if (sTargetFPS < 0)
                 {

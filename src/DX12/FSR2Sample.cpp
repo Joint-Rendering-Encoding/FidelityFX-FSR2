@@ -83,6 +83,11 @@ void FSR2Sample::OnParseCommandLine(LPSTR lpCmdLine, uint32_t* pWidth, uint32_t*
         m_UIState.m_nUpscaleType = jData.value("upscaleType", m_UIState.m_nUpscaleType); // FSR 1.0 = 3, FSR 2.0 = 4, Native = 5
         m_fUpscaleRatio = jData.value("upscaleRatio", m_fUpscaleRatio);                  // Between 1.0 and 3.0
         m_fMipBias = jData.value("mipBias", m_fMipBias);                                // Between -5.0 and 0.0
+
+        // FPS Limiter
+        m_UIState.bEnableFrameRateLimiter = jData.value("enableFrameRateLimiter", m_UIState.bEnableFrameRateLimiter);
+        m_UIState.bUseGPUFrameRateLimiter = jData.value("useGPUFrameRateLimiter", m_UIState.bUseGPUFrameRateLimiter);
+        m_UIState.targetFrameTime = jData.value("targetFrameTime", m_UIState.targetFrameTime); // in ms (1000.f * (1.f / sTargetFPS))
     };
 
     // read config file
