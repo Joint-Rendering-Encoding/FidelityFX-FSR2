@@ -770,8 +770,8 @@ void FSR2Sample::OnRender()
     else
     {
         BuildUI();  // UI logic. Note that the rendering of the UI happens later.
+        OnUpdate(); // Update camera, handle keyboard/mouse input
     }
-    OnUpdate(); // Update camera, handle keyboard/mouse input
 
     // Do Render frame using AFR
     m_pRenderer->OnRender(&m_UIState, m_UIState.camera, &m_swapChain);
