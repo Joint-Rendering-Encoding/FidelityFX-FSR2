@@ -3,20 +3,20 @@
     "CpuValidationLayerEnabled": false,
     "GpuValidationLayerEnabled": false,
     "presentationMode": 0,
-    "width": 3840,
-    "height": 2160,
+    "width": 1920,
+    "height": 1080,
     "activeScene": 1,
     "benchmark": false,
     "vsync": false,
     "stablePowerState": false,
     "fontsize": 13,
     "FreesyncHDROptionEnabled": true,
-    "upscaleType": 4,
-    "upscaleRatio": 2.0,
-    "mipBias": -2.0,
+    "upscaleType": 3,
+    "upscaleRatio": 8.0,
+    "mipBias": 0.0,
     "enableFrameRateLimiter": true,
     "useGPUFrameRateLimiter": true,
-    "targetFrameTime": 8.333333
+    "targetFrameTime": 16.666666
   },
   "scenes": [
     {
@@ -56,6 +56,7 @@
         "exitWhenTimeEnds": true,
         "resultsFilename": "Sponza.csv",
         "warmUpFrames": 50,
+        "warmUpFramesScreenshot": 50,
         "sequence": {
           "timeStart": 0,
           "timeEnd": 240,
