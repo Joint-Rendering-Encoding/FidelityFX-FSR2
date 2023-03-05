@@ -23,6 +23,7 @@
 #include <intrin.h>
 
 #include "FSR2Sample.h"
+#include "IOHelpers.h"
 
 #define USE_INVERTED_INFINITE_PROJECTION 1
 
@@ -89,6 +90,10 @@ void FSR2Sample::OnParseCommandLine(LPSTR lpCmdLine, uint32_t* pWidth, uint32_t*
         m_UIState.bUseGPUFrameRateLimiter = jData.value("useGPUFrameRateLimiter", m_UIState.bUseGPUFrameRateLimiter);
         m_UIState.targetFrameTime = jData.value("targetFrameTime", m_UIState.targetFrameTime); // in ms (1000.f * (1.f / sTargetFPS))
     };
+
+    // recreate the folder
+    std::string folderPath = "output";
+    recreateFolder(folderPath);
 
     // read config file
     //

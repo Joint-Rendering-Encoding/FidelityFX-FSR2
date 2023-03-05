@@ -28,6 +28,8 @@ set(sources
     UpscaleContext_FSR2_API.h
     GPUFrameRateLimiter.cpp
     GPUFrameRateLimiter.h
+    IOHelpers.cpp
+    IOHelpers.h
     ShaderCompiler.cpp
     ShaderCompiler.h
     FSR2Sample.cpp
